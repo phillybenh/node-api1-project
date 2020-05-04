@@ -1,13 +1,13 @@
 // Imports
 const express = require('express');
 const shortid = require('shortid');
-// console.log(shortid.generate());
-
+const cors = require('cors');
 
 const server = express();
 
 // tell server how to read JSON
 server.use(express.json());
+server.use(cors());
 
 // Global Variables
 let users = [
@@ -129,6 +129,5 @@ server.put('/api/users/:id', (req, res) => {
         })
     }
 })
-
 
 server.listen(8000, () => console.log('\n== API is up ==\n'));
