@@ -106,10 +106,28 @@ server.delete('/api/users/:id', (req, res) => {
     }
 })
 
-server.put('/api/user/:id', (req, res) => {
+server.put('/api/users/:id', (req, res) => {
     const id = req.params.id;
+    const user = users.find(user => user.id == id);
+    const index = users.indexOf(user);
+    console.log(user)
 
+    if (res) {
+        if (!user) {
+            res.status(404).json({
+                message: "The user with the specified ID does not exist."
+            })
+        } else {
+            const updatedUser = { ...user, ...req.body };
+            users[index] = updatedUser;
 
+            res.status(200).json(updatedUser);
+        }
+    } else {
+        res.status(500).json({
+            errorMessage: "The user information could not be modified."
+        })
+    }
 })
 
 
