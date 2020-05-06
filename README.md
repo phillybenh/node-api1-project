@@ -1,3 +1,10 @@
+npm init -y <---- pack.json file
+npx gitignore node
+npm i express
+npm i -D nodemon
+code script, "server":"nodemon index.js"
+npm run server
+
 # Node API 1 Project Starter Code
 
 ## Topics
